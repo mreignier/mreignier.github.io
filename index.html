@@ -7,8 +7,8 @@
 
 
     function drawChart() {
-      var queryString = encodeURIComponent("SELECT A, B, C, D, E WHERE F='wikia' ");
-      var queryURL = 'https://docs.google.com/spreadsheets/d/1b7SgERKwFbIKDD4RyulGX1UM0wzL76mKYa1c4PW1sZo/edit?usp=sharing&tq=' + queryString
+      var queryString = encodeURIComponent("SELECT A, B, C, D, E WHERE F='aa' ");
+      var queryURL = 'https://docs.google.com/spreadsheets/d/1e1fQ4IDw6Z0em-8toyLOl2oXPGgiyK9dUStnDgWk1bs/edit?usp=sharing' + queryString
       console.log(queryURL)
       var query = new google.visualization.Query(queryURL);
       query.send(handleQueryResponse);
