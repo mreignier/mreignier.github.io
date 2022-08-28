@@ -18,19 +18,20 @@
 
     function handleQueryResponse(response) {
       var data = response.getDataTable();
-      var text= document.getElementById('word').value
+      var text = document.getElementById('word').value
 
-      console.log(data)
+      console.log(text)
       var options = {
         chart: {
-          title: 'Evolution of Social Scores for word ' + text
+          title: 'Evolution of Social Scores',
+          subtitle: text
         },
         width: 900,
         height: 500
       };
 
       var chart = new google.visualization.LineChart(document.getElementById('linechart_material'));
-      chart.draw(data, options);
+      chart.draw(data, google.charts.Line.convertOptions(options));
     }
   </script>
   <script type="text/javascript">
