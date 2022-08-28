@@ -3,11 +3,13 @@
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
   <script type="text/javascript">
     google.charts.load('current', {'packages':['corechart']});
-    google.charts.setOnLoadCallback(drawChart);
+    //google.charts.setOnLoadCallback(drawChart);
 
 
     function drawChart() {
-      var queryString = encodeURIComponent('SELECT A, B, C, D, E WHERE F="aaa"');
+      var text= document.getElementById('word').value
+      console.log(text)
+      var queryString = encodeURIComponent('SELECT A, B, C, D, E WHERE F="'+ text +'"');
       var queryURL = 'https://docs.google.com/spreadsheets/d/1e1fQ4IDw6Z0em-8toyLOl2oXPGgiyK9dUStnDgWk1bs/edit?usp=sharing&tq=' + queryString
       console.log(queryURL)
       var query = new google.visualization.Query(queryURL);
@@ -16,10 +18,12 @@
 
     function handleQueryResponse(response) {
       var data = response.getDataTable();
+      var text= document.getElementById('word').value
+
       console.log(data)
       var options = {
         chart: {
-          title: 'Evolution of Social Scores'
+          title: 'Evolution of Social Scores for word ' + text
         },
         width: 900,
         height: 500
@@ -36,7 +40,7 @@
 <body>
   <label for="word">Select a word to study</label>
   <input type="text" id="word" name="word" list="word-list">
-
+  <button type="button" name="button" onclick="drawChart()">enter</button>
   <datalist id="word-list">
     <option value="aaa">
     <option value="aaa game">
