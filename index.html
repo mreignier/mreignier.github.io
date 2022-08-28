@@ -41,6 +41,7 @@
 <body>
   <label for="word">Select a word to study</label>
   <input type="text" id="word" name="word" list="word-list">
+  <<textarea name="neighbors" rows="8" cols="80">one, two, three</textarea>
   <button type="button" name="button" onclick="drawChart()">enter</button>
   <datalist id="word-list">
     <option value="aaa">
@@ -66,5 +67,6 @@
   </datalist>
 
   <div id="linechart_material"></div>
+  <div id="neighbors"></div>
 </body>
 </html>
