@@ -18,12 +18,11 @@
       var data = response.getDataTable();
       console.log(data)
       var options = {
-        title: 'Company Performance',
-        curveType: 'function',
+        title: 'Evolution of Social Scores',
         legend: { position: 'bottom' }
       };
 
-      var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+      var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
       chart.draw(data, options);
     }
   </script>
