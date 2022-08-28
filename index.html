@@ -7,7 +7,7 @@
 
 
     function drawChart() {
-      var queryString = encodeURIComponent('SELECT F, E, D, C, B WHERE A="aaa"');
+      var queryString = encodeURIComponent('SELECT A, C, D, E, F WHERE B="wikia"');
       var query = new google.visualization.Query('https://docs.google.com/spreadsheets/d/1b7SgERKwFbIKDD4RyulGX1UM0wzL76mKYa1c4PW1sZo/edit?usp=sharing&tq=' + queryString);
       query.send(handleQueryResponse);
     }
