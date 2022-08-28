@@ -7,7 +7,7 @@
 
 
     function drawChart() {
-      var queryString = encodeURIComponent('SELECT A, B, C, D WHERE D=2');
+      var queryString = encodeURIComponent('SELECT A, B, C WHERE D=2');
       var query = new google.visualization.Query('https://docs.google.com/spreadsheets/d/1b7SgERKwFbIKDD4RyulGX1UM0wzL76mKYa1c4PW1sZo/edit?usp=sharing&tq=' + queryString);
       query.send(handleQueryResponse);
     }
