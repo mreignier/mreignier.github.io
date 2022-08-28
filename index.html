@@ -3,35 +3,16 @@
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
   <script type="text/javascript">
     google.charts.load('current', {'packages':['corechart']});
-    google.charts.setOnLoadCallback(drawSheetName);
+    google.charts.setOnLoadCallback(drawChart);
 
-    function drawSheetName() {
-      var queryString = encodeURIComponent('SELECT A, H, O, Q, R, U LIMIT 5 OFFSET 8');
-
-      var query = new google.visualization.Query(
-          'https://docs.google.com/spreadsheets/d/1XWJLkAwch5GXAt_7zOFDcg8Wm8Xv29_8PWuuW15qmAE/gviz/tq?sheet=Sheet1&headers=1&tq=' + queryString);
-      query.send(handleSampleDataQueryResponse);
-    }
-
-    function handleSampleDataQueryResponse(response) {
-      if (response.isError()) {
-        alert('Error in query: ' + response.getMessage() + ' ' + response.getDetailedMessage());
-        return;
-      }
-
-      var data = response.getDataTable();
-      var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
-      chart.draw(data, { height: 400 });
-    }
 
     function drawChart() {
-      var data = google.visualization.arrayToDataTable([
-        ['Year', 'Sales', 'Expenses'],
-        ['2004',  1000,      400],
-        ['2005',  1170,      460],
-        ['2006',  660,       1120],
-        ['2007',  1030,      540]
-      ]);
+      var query = new google.visualization.Query('https://docs.google.com/spreadsheets/d/1b7SgERKwFbIKDD4RyulGX1UM0wzL76mKYa1c4PW1sZo/edit?usp=sharing');
+      query.send(handleQueryResponse);
+    }
+
+    function handleQueryResponse(response) {
+      var data = response.getDataTable();
 
       var options = {
         title: 'Company Performance',
@@ -40,9 +21,9 @@
       };
 
       var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
-
       chart.draw(data, options);
     }
+
   </script>
 </head>
 <body>
