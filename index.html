@@ -2,7 +2,7 @@
 <head>
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
   <script type="text/javascript">
-    google.charts.load('current', {'packages':['line']});
+    google.charts.load('current', {'packages':['line', 'table']});
     //google.charts.setOnLoadCallback(drawChart);
 
 
@@ -32,6 +32,9 @@
 
       var chart = new google.charts.Line(document.getElementById('linechart_material'));
       chart.draw(data, google.charts.Line.convertOptions(options));
+
+      var table = new google.visualization.Table(document.getElementById('table_div'))
+      table.draw(data);
     }
   </script>
   <script type="text/javascript">
@@ -41,7 +44,6 @@
 <body>
   <label for="word">Select a word to study</label>
   <input type="text" id="word" name="word" list="word-list">
-  <<textarea name="neighbors" rows="8" cols="80">one, two, three</textarea>
   <button type="button" name="button" onclick="drawChart()">enter</button>
   <datalist id="word-list">
     <option value="aaa">
@@ -66,7 +68,10 @@
     <option value="aba">
   </datalist>
 
-  <div id="linechart_material"></div>
-  <div id="neighbors"></div>
+<table class='columns'>
+  <tr>
+    <td><div id="linechart_material" style="border: 1px solid #ccc"></div></td>
+    <td><div id="table_div" style="border: 1px solid #ccc"></div></td>
+  </tr>
 </body>
 </html>
