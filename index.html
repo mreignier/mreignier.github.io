@@ -9,14 +9,21 @@
     function drawChart() {
       document.getElementById('linechart_material').innerHTML = "loading ..."
       document.getElementById('table_div').innerHTML = ""
-      
+
       var text= document.getElementById('word').value
       console.log(text)
       var queryString = encodeURIComponent('SELECT A, B, C, D, E WHERE F="'+ text +'"');
       var queryURL = 'https://docs.google.com/spreadsheets/d/1e1fQ4IDw6Z0em-8toyLOl2oXPGgiyK9dUStnDgWk1bs/edit?usp=sharing&tq=' + queryString
       console.log(queryURL)
+
       var query = new google.visualization.Query(queryURL);
       query.send(handleQueryResponse);
+
+      var queryStringTable = encodeURIComponent('SELECT A, C WHERE B="'+ text +'"');
+      var queryURLTable = 'https://docs.google.com/spreadsheets/d/100rgFnOxOLWqwQ42D8gRBTEDoUFSXO769R40VRS_X1w/edit?usp=sharing&tq=' + queryStringTable
+      var queryTable = new google.visualization.Query(queryURLTable);
+      queryTable.send(handleQueryResponseTable);
+
     }
 
     function handleQueryResponse(response) {
@@ -29,16 +36,23 @@
           title: 'Evolution of Social Scores',
           subtitle: text
         },
-        width: 900,
-        height: 500
+        width: 600,
+        height: 250
       };
 
       var chart = new google.charts.Line(document.getElementById('linechart_material'));
       chart.draw(data, google.charts.Line.convertOptions(options));
-
-      var table = new google.visualization.Table(document.getElementById('table_div'))
-      table.draw(data);
     }
+
+    function handleQueryResponseTable(response){
+    var data = response.getDataTable();
+    var options = {
+      width: 300,
+      height: 125
+    };
+    var table = new google.visualization.Table(document.getElementById('table_div'))
+    table.draw(data);
+  }
 
   </script>
   <script type="text/javascript">
