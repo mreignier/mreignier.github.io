@@ -7,6 +7,9 @@
 
 
     function drawChart() {
+      document.getElementById('linechart_material').innerHTML = "loading ..."
+      document.getElementById('table_div').innerHTML = ""
+      
       var text= document.getElementById('word').value
       console.log(text)
       var queryString = encodeURIComponent('SELECT A, B, C, D, E WHERE F="'+ text +'"');
@@ -36,6 +39,7 @@
       var table = new google.visualization.Table(document.getElementById('table_div'))
       table.draw(data);
     }
+
   </script>
   <script type="text/javascript">
 
