@@ -19,7 +19,7 @@
       var query = new google.visualization.Query(queryURL);
       query.send(handleQueryResponse);
 
-      var queryStringTable = encodeURIComponent('SELECT A, C WHERE B="'+ text +'"');
+      var queryStringTable = encodeURIComponent('SELECT B, C, D, E WHERE A="'+ text +'"');
       var queryURLTable = 'https://docs.google.com/spreadsheets/d/100rgFnOxOLWqwQ42D8gRBTEDoUFSXO769R40VRS_X1w/edit?usp=sharing&tq=' + queryStringTable
       var queryTable = new google.visualization.Query(queryURLTable);
       queryTable.send(handleQueryResponseTable);
@@ -36,8 +36,8 @@
           title: 'Evolution of Social Scores',
           subtitle: text
         },
-        width: 600,
-        height: 250
+        width: 700,
+        height: 450
       };
 
       var chart = new google.charts.Line(document.getElementById('linechart_material'));
